@@ -11,4 +11,19 @@ class Book < ApplicationRecord
 	end
 	
 	has_many :book_comments, dependent: :destroy
+	
+	#search_model
+  def search.looks(search, word)
+    if search == "perfect_match"
+      @book = Book.where("title LIKE? or body LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @book = Book.where("title LIKE? or body LIKE?", "#{word}")
+    elsif search == "backword_match"
+      @book = Book.where("title LIKE? or body LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @book = Book.where("title LIKE? or body LIKE?", "#{word}")
+    else
+      @book = Book.all
+    end
+  end
 end
