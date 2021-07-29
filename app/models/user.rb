@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
   
   #search_model
-  def search.looks(search, word)
+  def self.search(search, word)
     if search == "perfect_match"
       @user = User.where("name LIKE?", "#{word}")
     elsif search == "forward_match"
